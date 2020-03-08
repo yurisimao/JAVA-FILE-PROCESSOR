@@ -8,8 +8,9 @@ public class Writer implements ItemWriter<String> {
 
 	@Override
 	public void write(List<? extends String> items) throws Exception {
-		// TODO Auto-generated method stub
-		
+
+		items.forEach(x -> System.out.println("Writer - " + x));
+
 	}
 
 }

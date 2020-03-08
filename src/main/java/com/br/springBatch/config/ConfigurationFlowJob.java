@@ -2,7 +2,6 @@ package com.br.springBatch.config;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
@@ -11,6 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.task.TaskExecutor;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import com.br.springBatch.listener.JobListenerNotification;
 import com.br.springBatch.processor.Processor;
@@ -18,8 +19,7 @@ import com.br.springBatch.reader.Reader;
 import com.br.springBatch.writer.Writer;
 
 @Configuration
-@EnableBatchProcessing
-@ComponentScan(basePackages = "com.br.springBatch.listener")
+@ComponentScan(basePackages = {"com.br.springBatch.listener", "com.br.springBatch.repository"})
 public class ConfigurationFlowJob {
 
 	@Autowired
@@ -33,6 +33,12 @@ public class ConfigurationFlowJob {
 
 	@Value("${chunck.size}")
 	private int chunckSize;
+	
+	@Value("${max.threads}")
+	private int maxThreads;
+	
+	@Value("${threads.name.prefix}")
+	private String threadName;
 
 	public Job flowJob() {
 		return jobBuilderFactory.get("flowJob")
@@ -51,7 +57,16 @@ public class ConfigurationFlowJob {
 				.reader(reader())
 				.processor(processor())
 				.writer(writer())
+				.taskExecutor(taskExecutor())
 				.build();
+	}
+	
+	@Bean
+	public TaskExecutor taskExecutor() {
+		ThreadPoolTaskExecutor threads = new ThreadPoolTaskExecutor();
+		threads.setMaxPoolSize(maxThreads);
+		threads.setThreadNamePrefix(threadName);
+		return threads;
 	}
 
 	@Bean
