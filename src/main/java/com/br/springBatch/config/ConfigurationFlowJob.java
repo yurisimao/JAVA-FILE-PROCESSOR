@@ -2,11 +2,13 @@ package com.br.springBatch.config;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +21,8 @@ import com.br.springBatch.reader.Reader;
 import com.br.springBatch.writer.Writer;
 
 @Configuration
+@EnableBatchProcessing
+@EnableAutoConfiguration
 @ComponentScan(basePackages = {"com.br.springBatch.listener", "com.br.springBatch.repository"})
 public class ConfigurationFlowJob {
 
@@ -40,6 +44,7 @@ public class ConfigurationFlowJob {
 	@Value("${threads.name.prefix}")
 	private String threadName;
 
+	@Bean
 	public Job flowJob() {
 		return jobBuilderFactory.get("flowJob")
 				.incrementer(new RunIdIncrementer())
