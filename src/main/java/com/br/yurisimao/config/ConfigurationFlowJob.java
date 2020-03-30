@@ -23,7 +23,7 @@ import com.br.yurisimao.writer.FileWriter;
 @Configuration
 @EnableBatchProcessing
 @EnableAutoConfiguration
-@ComponentScan(basePackages = {"com.br.springBatch.listener", "com.br.springBatch.repository"})
+@ComponentScan(basePackages = {"com.br.yurisimao.listener", "com.br.yurisimao.repository"})
 public class ConfigurationFlowJob {
 
 	@Autowired

@@ -27,6 +27,7 @@ public class Application {
 
         final Instant end = Instant.now();
         log.info(getExecutionTime(start, end));
+        log.info("Exit code: " + exitCode);
         System.exit(exitCode);
     }
 
