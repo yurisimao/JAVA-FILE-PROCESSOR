@@ -12,10 +12,7 @@ import org.springframework.batch.item.ParseException;
 import org.springframework.batch.item.UnexpectedInputException;
 import org.springframework.beans.factory.annotation.Value;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
-public class Reader implements ItemReader<String> {
+public class FileReader implements ItemReader<String> {
 
 	@Value("${input.file}")
 	private String inputFile;
@@ -25,14 +22,8 @@ public class Reader implements ItemReader<String> {
 	@Override
 	public String read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
 
-		String msg = "Reading lines in file.. " + inputFile;
-
-		log.info(msg);
-
 		final List<String> lines = Files.lines(Paths.get(inputFile)).filter(x -> StringUtils.isNotEmpty(x))
 				.collect(Collectors.toList());
-
-		log.info(msg + " Done!");
 
 		if (count < lines.size()) {
 

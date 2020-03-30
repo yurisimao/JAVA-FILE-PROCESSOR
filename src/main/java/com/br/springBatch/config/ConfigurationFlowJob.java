@@ -16,9 +16,9 @@ import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import com.br.springBatch.listener.JobListenerNotification;
-import com.br.springBatch.processor.Processor;
-import com.br.springBatch.reader.Reader;
-import com.br.springBatch.writer.Writer;
+import com.br.springBatch.processor.FileProcessor;
+import com.br.springBatch.reader.FileReader;
+import com.br.springBatch.writer.FileWriter;
 
 @Configuration
 @EnableBatchProcessing
@@ -68,25 +68,23 @@ public class ConfigurationFlowJob {
 	
 	@Bean
 	public TaskExecutor taskExecutor() {
-		ThreadPoolTaskExecutor threads = new ThreadPoolTaskExecutor();
+		final ThreadPoolTaskExecutor threads = new ThreadPoolTaskExecutor();
 		threads.setMaxPoolSize(maxThreads);
 		threads.setThreadNamePrefix(threadName);
 		return threads;
 	}
 
 	@Bean
-	public Reader reader() {
-		return new Reader();
+	public FileReader reader() { return new FileReader(); }
+
+	@Bean
+	public FileProcessor processor() {
+		return new FileProcessor();
 	}
 
 	@Bean
-	public Processor processor() {
-		return new Processor();
-	}
-
-	@Bean
-	public Writer writer() {
-		return new Writer();
+	public FileWriter writer() {
+		return new FileWriter();
 	}
 
 }
