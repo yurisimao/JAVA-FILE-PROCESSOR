@@ -1,4 +1,4 @@
-package com.br.springBatch.writer;
+package com.br.yurisimao.writer;
 
 import java.util.List;
 

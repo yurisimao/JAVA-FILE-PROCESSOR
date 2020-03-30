@@ -1,4 +1,4 @@
-package com.br.springBatch.reader;
+package com.br.yurisimao.reader;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;

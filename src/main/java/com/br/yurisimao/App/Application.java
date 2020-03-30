@@ -1,4 +1,4 @@
-package com.br.springBatch.App;
+package com.br.yurisimao.App;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.br.springBatch.config.ConfigurationFlowJob;
+import com.br.yurisimao.config.ConfigurationFlowJob;
 
 import java.time.Duration;
 import java.time.Instant;

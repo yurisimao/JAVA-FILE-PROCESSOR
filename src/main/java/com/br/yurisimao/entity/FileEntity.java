@@ -1,4 +1,4 @@
-package com.br.springBatch.entity;
+package com.br.yurisimao.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package com.br.springBatch.processor;
+package com.br.yurisimao.processor;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.batch.item.ItemProcessor;

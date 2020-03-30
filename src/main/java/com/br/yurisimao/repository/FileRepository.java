@@ -1,9 +1,9 @@
-package com.br.springBatch.repository;
+package com.br.yurisimao.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.br.springBatch.entity.FileEntity;
+import com.br.yurisimao.entity.FileEntity;
 
 /**
  * The Interface FileRepository.

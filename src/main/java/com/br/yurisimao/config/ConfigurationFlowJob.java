@@ -1,4 +1,4 @@
-package com.br.springBatch.config;
+package com.br.yurisimao.config;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -15,10 +15,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-import com.br.springBatch.listener.JobListenerNotification;
-import com.br.springBatch.processor.FileProcessor;
-import com.br.springBatch.reader.FileReader;
-import com.br.springBatch.writer.FileWriter;
+import com.br.yurisimao.listener.JobListenerNotification;
+import com.br.yurisimao.processor.FileProcessor;
+import com.br.yurisimao.reader.FileReader;
+import com.br.yurisimao.writer.FileWriter;
 
 @Configuration
 @EnableBatchProcessing
