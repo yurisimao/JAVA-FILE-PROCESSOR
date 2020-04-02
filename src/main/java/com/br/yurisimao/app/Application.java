@@ -1,4 +1,4 @@
-package com.br.yurisimao.App;
+package com.br.yurisimao.app;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
@@ -7,18 +7,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.br.yurisimao.config.ConfigurationFlowJob;
+import com.br.yurisimao.config.BatchConfig;
 
 import java.time.Duration;
 import java.time.Instant;
 
+import static com.br.yurisimao.constants.Constants.EXECUTION_TIME;
+
 
 @Slf4j
 @SpringBootApplication
-@ComponentScan(basePackageClasses = {ConfigurationFlowJob.class})
+@ComponentScan(basePackageClasses = {BatchConfig.class})
 public class Application {
-
-    public static final String EXECUTION_TIME = "Tempo de execução: ";
 
     public static void main(String[] args) {
         final Instant start = Instant.now();

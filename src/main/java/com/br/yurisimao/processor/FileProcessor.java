@@ -1,31 +1,26 @@
 package com.br.yurisimao.processor;
 
+import com.br.yurisimao.domain.PrimaryDomain;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.batch.item.ItemProcessor;
-import org.springframework.beans.factory.annotation.Value;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class FileProcessor implements ItemProcessor<String, String> {
-	
-	@Value("${input.file}")
-	private String inputFile;
+public class FileProcessor implements ItemProcessor<PrimaryDomain, PrimaryDomain> {
 
-	@Override
-	public String process(@NotNull String item) throws Exception {
-		
-		final int number = Integer.parseInt(item.split("\\|")[0]);
-		
-		if (number % 100 == 0) {
-			
-			log.info("Found! " + item);
-			
-			return item;
-		}
-		
-		return null;
-		
-	}
+    @Override
+    public PrimaryDomain process(@NotNull final PrimaryDomain domain) throws Exception {
 
+        if (domain.getPosition() % 100 == 0) {
+
+            log.info("Found! " + domain);
+
+            return domain;
+        }
+
+        return null;
+    }
 }
+
+
